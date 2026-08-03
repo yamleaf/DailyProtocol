@@ -39,6 +39,10 @@ object Protocol {
     const val FIELD_RESET_HOUR = "rh"
     const val FIELD_TIME_RANGE = "tr"
     const val FIELD_STAY_OVERTIME = "ot"
+    const val FIELD_MSG_CHANNEL = "mc"
+    const val FIELD_MESSAGE_TITLE = "mt"
+    const val FIELD_REMOTE_ENABLED = "re"
+    const val FIELD_MSG_CONFIG = "mcfg"
 
     const val TOPIC_PREFIX = "dt"
     const val PAIRING_INFO = "daily-pairing-v1"
