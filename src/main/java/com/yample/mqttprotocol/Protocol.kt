@@ -16,6 +16,7 @@ object Protocol {
     const val CMD_TASK = "T"
     const val CMD_ACTION = "X"
     const val CMD_PUSH = "D"
+    const val CMD_ALERT = "AL" // 被控端 → 控制端 一次性事件告警（低电量分段 / 开始充电）
 
     // 动作命令字段（配合 CMD_ACTION）
     const val ACTION_PUNCH = "punch"
@@ -43,6 +44,7 @@ object Protocol {
     const val FIELD_MESSAGE_TITLE = "mt"
     const val FIELD_REMOTE_ENABLED = "re"
     const val FIELD_MSG_CONFIG = "mcfg"
+    const val FIELD_LOW_BATTERY_THRESHOLD = "lb" // 低电量告警阈值（%，默认 30，范围 10~80）
 
     const val TOPIC_PREFIX = "dt"
     const val PAIRING_INFO = "daily-pairing-v1"
