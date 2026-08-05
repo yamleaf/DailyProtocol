@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 统一列表项：图标圆角方 + 标题 + 副标题 + 末尾值/箭头/开关 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:background="?attr/selectableItemBackground"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16">
+
+        <View
+            android:id="@+id/iconContainer"
+            android:layout_width="@dimen/icon_container"
+            android:layout_height="@dimen/icon_container"
+            android:background="@color/md_primaryContainer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/daily_ic_settings"
+            app:tint="@color/md_primary"
+            app:layout_constraintBottom_toBottomOf="@id/iconContainer"
+            app:layout_constraintEnd_toEndOf="@id/iconContainer"
+            app:layout_constraintStart_toStartOf="@id/iconContainer"
+            app:layout_constraintTop_toTopOf="@id/iconContainer" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:textColor="@color/md_onSurface"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/endSlot"
+            app:layout_constraintStart_toEndOf="@id/iconContainer"
+            app:layout_constraintTop_toTopOf="@id/iconContainer" />
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/md_onSurfaceVariant"
+            android:textSize="@dimen/sp_12"
+            app:layout_constraintEnd_toStartOf="@id/endSlot"
+            app:layout_constraintStart_toEndOf="@id/iconContainer"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <!-- 末尾槽：放箭头 / 值 / 开关，由宿主按需填充 -->
+        <FrameLayout
+            android:id="@+id/endSlot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

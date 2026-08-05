@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 分区卡片：白底、圆角16、细描边、轻阴影（parent 用公开 Widget.MaterialComponents.CardView，避免跨模块引用 Material3 私有样式导致 app 链接失败） -->
+    <style name="Widget.Daily.SectionCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/md_surface</item>
+        <item name="cardCornerRadius">@dimen/radius_card</item>
+        <item name="cardElevation">@dimen/elev_surface</item>
+        <item name="strokeColor">@color/md_outlineVariant</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- 图标容器：圆角方形（12dp），品牌浅底 -->
+    <style name="Widget.Daily.IconContainer" parent="android:Widget">
+        <item name="android:background">@color/md_primaryContainer</item>
+        <item name="android:layout_width">@dimen/icon_container</item>
+        <item name="android:layout_height">@dimen/icon_container</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- 列表项标题 / 副标题文字 -->
+    <style name="Widget.Daily.ListTitle" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_onSurface</item>
+    </style>
+
+    <style name="Widget.Daily.ListSubtitle" parent="android:Widget.TextView">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:textColor">@color/md_onSurfaceVariant</item>
+    </style>
+
+    <!-- 对话框：统一 Material AlertDialog 基础样式（公开 parent；windowMinWidth 在此上下文不可解析，改用 colorPrimary 叠加） -->
+    <style name="Widget.Daily.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog.Alert">
+        <item name="colorPrimary">@color/md_primary</item>
+    </style>
+</resources>

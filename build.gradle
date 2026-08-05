@@ -27,4 +27,6 @@ android {
 dependencies {
     implementation 'com.google.code.gson:gson:2.14.0'
     implementation 'androidx.annotation:annotation:1.8.1'
+    // 设计系统样式（Widget.Daily.*）继承自 Material3 父样式，库需直接依赖 Material
+    implementation 'com.google.android.material:material:1.13.0'
 }

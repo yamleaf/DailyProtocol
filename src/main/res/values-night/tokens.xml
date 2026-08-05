@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 深色模式：令牌按浅/深双值定义（P0 即前置，非后置） -->
+    <color name="md_primary">#7F77DD</color>
+    <color name="md_onPrimary">#FFFFFF</color>
+    <color name="md_primaryContainer">#3C3489</color>
+    <color name="md_onPrimaryContainer">#E0E0FF</color>
+
+    <color name="md_secondary">#C7C5F0</color>
+    <color name="md_onSecondary">#2A2C44</color>
+    <color name="md_secondaryContainer">#43456A</color>
+    <color name="md_onSecondaryContainer">#E2E1FA</color>
+
+    <color name="md_tertiary">#9BDCC0</color>
+    <color name="md_onTertiary">#003826</color>
+    <color name="md_tertiaryContainer">#1E5040</color>
+    <color name="md_onTertiaryContainer">#B7F1D8</color>
+
+    <color name="md_error">#FFB4AB</color>
+    <color name="md_onError">#690005</color>
+    <color name="md_errorContainer">#93000A</color>
+    <color name="md_onErrorContainer">#FFDAD6</color>
+
+    <color name="md_success">#7FD8A8</color>
+    <color name="md_onSuccess">#00341E</color>
+
+    <color name="md_warning">#FFB877</color>
+    <color name="md_warningContainer">#5C2E00</color>
+    <color name="md_onWarningContainer">#FFF1E6</color>
+
+    <color name="md_teal">#5DCAA5</color>
+    <color name="md_tealContainer">#04342C</color>
+    <color name="md_onTealContainer">#E6F7F7</color>
+
+    <color name="md_surface">#26262E</color>
+    <color name="md_onSurface">#EDEDF2</color>
+    <color name="md_surfaceVariant">#444441</color>
+    <color name="md_onSurfaceVariant">#C7C5D0</color>
+    <color name="md_background">#1B1B23</color>
+    <color name="md_onBackground">#E4E1EC</color>
+    <color name="md_outline">#8B8A95</color>
+    <color name="md_outlineVariant">#444441</color>
+
+    <color name="header_start">#7F77DD</color>
+    <color name="header_end">#9583FF</color>
+    <color name="on_header">#FFFFFF</color>
+
+    <color name="online">#7FD8A8</color>
+    <color name="offline">#C7C5D0</color>
+</resources>

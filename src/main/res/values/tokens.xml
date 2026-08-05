@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ===== 品牌主色（D1 决策：双端统一紫 #5B5BD6，库为唯一源，app 层不再重复定义） ===== -->
+    <color name="md_primary">#5B5BD6</color>
+    <color name="md_onPrimary">#FFFFFF</color>
+    <color name="md_primaryContainer">#E0E0FF</color>
+    <color name="md_onPrimaryContainer">#0E0F4A</color>
+
+    <!-- ===== 次色 ===== -->
+    <color name="md_secondary">#5D5D8A</color>
+    <color name="md_onSecondary">#FFFFFF</color>
+    <color name="md_secondaryContainer">#E2E1FA</color>
+    <color name="md_onSecondaryContainer">#1A1A34</color>
+
+    <!-- ===== 第三色（绿） ===== -->
+    <color name="md_tertiary">#2E7D5B</color>
+    <color name="md_onTertiary">#FFFFFF</color>
+    <color name="md_tertiaryContainer">#B7F1D8</color>
+    <color name="md_onTertiaryContainer">#002116</color>
+
+    <!-- ===== 语义色 ===== -->
+    <color name="md_error">#BA1A1A</color>
+    <color name="md_onError">#FFFFFF</color>
+    <color name="md_errorContainer">#FFDAD6</color>
+    <color name="md_onErrorContainer">#410002</color>
+
+    <color name="md_success">#2E9E63</color>
+    <color name="md_onSuccess">#FFFFFF</color>
+
+    <color name="md_warning">#FA8C16</color>
+    <color name="md_warningContainer">#FFF1E6</color>
+    <color name="md_onWarningContainer">#5C2E00</color>
+
+    <color name="md_teal">#0E9B98</color>
+    <color name="md_tealContainer">#E6F7F7</color>
+    <color name="md_onTealContainer">#04342C</color>
+
+    <!-- ===== 表面 / 文字 ===== -->
+    <color name="md_surface">#FBF8FF</color>
+    <color name="md_onSurface">#1B1B23</color>
+    <color name="md_surfaceVariant">#E4E1EC</color>
+    <color name="md_onSurfaceVariant">#46464F</color>
+    <color name="md_background">#F6F4FB</color>
+    <color name="md_onBackground">#1B1B23</color>
+    <color name="md_outline">#767680</color>
+    <color name="md_outlineVariant">#C7C5D0</color>
+
+    <!-- ===== 头部渐变（控制端） ===== -->
+    <color name="header_start">#5B5BD6</color>
+    <color name="header_end">#7C4DFF</color>
+    <color name="on_header">#FFFFFF</color>
+
+    <!-- ===== 状态点（在线/离线） ===== -->
+    <color name="online">#2E9E63</color>
+    <color name="offline">#9A9AA5</color>
+
+    <!-- ===== 控制端专属语义扩展（原 app 局部定义，统一上提到库；无深色变体，沿用浅色） ===== -->
+    <color name="md_skip">#616161</color>
+    <color name="md_skipContainer">#ECEFF1</color>
+    <color name="md_missed">#9AA0A6</color>
+    <color name="md_missedContainer">#F1F3F4</color>
+
+    <!-- ===== 历史/工具色（库统一提供，app 不再重复定义，避免跨模块重复资源） ===== -->
+    <color name="ios_green">#4DDC64</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FFC107</color>
+    <color name="light_gray">#D3D3D3</color>
+
+    <!-- ===== 被控端旧名别名桥接（指向 md_*，保证过渡期代码不崩，库统一提供） ===== -->
+    <color name="theme_color">@color/md_primary</color>
+    <color name="surface">@color/md_surface</color>
+    <color name="on_surface">@color/md_onSurface</color>
+    <color name="surface_variant">@color/md_surfaceVariant</color>
+    <color name="on_surface_variant">@color/md_onSurfaceVariant</color>
+    <color name="outline">@color/md_outline</color>
+    <color name="outline_variant">@color/md_outlineVariant</color>
+    <color name="primary_container">@color/md_primaryContainer</color>
+    <color name="on_primary_container">@color/md_onPrimaryContainer</color>
+    <color name="back_ground_color">@color/md_background</color>
+    <color name="text_hint_color">#CCCCCC</color>
+    <color name="text_default_color">#424242</color>
+</resources>
