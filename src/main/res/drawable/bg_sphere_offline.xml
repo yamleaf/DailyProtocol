@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 离线/解绑状态：红色球面 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 底层：深色边缘 -->
+    <item
+        android:left="0.5dp"
+        android:top="0.5dp"
+        android:right="0.5dp"
+        android:bottom="0.5dp">
+        <shape android:shape="oval">
+            <solid android:color="#1A000000" />
+        </shape>
+    </item>
+    <!-- 主球体 -->
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="6dp"
+                android:centerX="0.35"
+                android:centerY="0.3"
+                android:startColor="#FCA5A5"
+                android:centerColor="#EF4444"
+                android:endColor="#B91C1C" />
+            <size
+                android:width="10dp"
+                android:height="10dp" />
+        </shape>
+    </item>
+    <!-- 顶部高光 -->
+    <item
+        android:left="2.5dp"
+        android:top="2dp"
+        android:right="4.5dp"
+        android:bottom="5dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="linear"
+                android:angle="135"
+                android:startColor="#B3FFFFFF"
+                android:endColor="#1AFFFFFF" />
+        </shape>
+    </item>
+</layer-list>

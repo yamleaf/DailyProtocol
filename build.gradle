@@ -29,4 +29,6 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.8.1'
     // 设计系统样式（Widget.Daily.*）继承自 Material3 父样式，库需直接依赖 Material
     implementation 'com.google.android.material:material:1.13.0'
+    // ThemeManager 需要 AppCompatDelegate（深色/浅色/跟随系统切换）
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 }
