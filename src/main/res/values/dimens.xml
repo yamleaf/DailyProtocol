@@ -30,6 +30,9 @@
     <!-- 组件尺寸 -->
     <dimen name="list_item_height">60dp</dimen>
     <dimen name="icon_container">40dp</dimen>
+    <dimen name="size_28">28dp</dimen>
+    <dimen name="size_40">40dp</dimen>
+    <dimen name="size_56">56dp</dimen>
     <dimen name="min_touch">48dp</dimen>
     <dimen name="divider">1dp</dimen>
 

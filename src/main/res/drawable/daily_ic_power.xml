@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 电源图标（Hero 操作按钮用） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M13,3h-2v10h2V3zM16.83,5.67l-1.42,1.41C17.99,9.01 19,11.37 19,14c0,3.87 -3.13,7 -7,7s-7,-3.13 -7,-7c0,-2.63 1.01,-4.99 2.58,-6.92L6.17,5.67C4.23,8.06 3,11.09 3,14c0,4.97 4.03,9 9,9s9,-4.03 9,-9c0,-2.91 -1.23,-5.94 -3.17,-8.33z" />
+</vector>
