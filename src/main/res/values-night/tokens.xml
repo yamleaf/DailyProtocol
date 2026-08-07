@@ -38,6 +38,11 @@
     <color name="md_onSurfaceVariant">#C7C5D0</color>
     <color name="md_background">#1B1B23</color>
     <color name="md_onBackground">#E4E1EC</color>
+    <color name="md_surfaceContainerLowest">#202028</color>
+    <color name="md_surfaceContainerLow">#2A2A33</color>
+    <color name="md_surfaceContainer">#2F2F38</color>
+    <color name="md_surfaceContainerHigh">#393943</color>
+    <color name="md_surfaceContainerHighest">#44444E</color>
     <color name="md_outline">#8B8A95</color>
     <color name="md_outlineVariant">#444441</color>
 
