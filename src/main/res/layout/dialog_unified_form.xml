@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:paddingStart="24dp"
@@ -44,11 +44,18 @@
         android:layout_height="12dp"
         android:visibility="gone" />
 
-    <!-- 自定义内容容器：注入 EditText / 表单布局 / 滚动视图等 -->
-    <FrameLayout
-        android:id="@+id/contentHost"
+    <!-- 自定义内容容器：可滚动，最大高度限制避免按钮被推出屏幕 -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:maxHeight="420dp">
+
+        <FrameLayout
+            android:id="@+id/contentHost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
 
     <Space
         android:layout_width="match_parent"
