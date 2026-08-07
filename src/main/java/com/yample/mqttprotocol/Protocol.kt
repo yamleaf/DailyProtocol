@@ -45,6 +45,9 @@ object Protocol {
     const val FIELD_REMOTE_ENABLED = "re"
     const val FIELD_MSG_CONFIG = "mcfg"
     const val FIELD_LOW_BATTERY_THRESHOLD = "lb" // 低电量告警阈值（%，默认 30，范围 10~80）
+    const val FIELD_BATTERY_SMART_ALERT = "ba" // 智能预警上报开关（bool）
+    const val FIELD_BATTERY_WARNING_HOUR = "bw" // 预警上报时间（int, 0-23）
+    const val FIELD_BATTERY_ALERT_STAGES = "bs" // 低电量告警段数（int, 0-3）
 
     const val TOPIC_PREFIX = "dt"
     const val PAIRING_INFO = "daily-pairing-v1"
