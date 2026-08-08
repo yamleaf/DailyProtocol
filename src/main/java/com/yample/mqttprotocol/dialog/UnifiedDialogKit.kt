@@ -122,7 +122,7 @@ object UnifiedDialogKit {
     ): AlertDialog {
         val content = buildContent(ctx, type, title, message)
         val dlg = MaterialAlertDialogBuilder(ctx, R.style.ThemeOverlay_Daily_UnifiedDialog)
-            .setView(content)
+            .setView(DialogIdleBridge.wrap(content))
             .create()
         dlg.setCancelable(cancelable)
         configureButtons(dlg, ctx, content, positiveText, negativeText, danger, onPositive, onNegative)
@@ -224,7 +224,7 @@ object UnifiedDialogKit {
         )
 
         val dlg = MaterialAlertDialogBuilder(ctx, R.style.ThemeOverlay_Daily_UnifiedDialog)
-            .setView(view)
+            .setView(DialogIdleBridge.wrap(view))
             .create()
 
         val btnBar = view.findViewById<LinearLayout>(R.id.btnBar)
@@ -335,7 +335,7 @@ object UnifiedDialogKit {
         val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_unified_list, null)
         setListTitle(view, title)
         val dlg = MaterialAlertDialogBuilder(ctx, R.style.ThemeOverlay_Daily_UnifiedDialog)
-            .setView(view)
+            .setView(DialogIdleBridge.wrap(view))
             .create()
         dlg.setCancelable(cancelable)
 
@@ -367,7 +367,7 @@ object UnifiedDialogKit {
         val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_unified_list, null)
         setListTitle(view, title)
         val dlg = MaterialAlertDialogBuilder(ctx, R.style.ThemeOverlay_Daily_UnifiedDialog)
-            .setView(view)
+            .setView(DialogIdleBridge.wrap(view))
             .create()
         dlg.setCancelable(cancelable)
 
@@ -407,7 +407,7 @@ object UnifiedDialogKit {
         val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_unified_list, null)
         setListTitle(view, title)
         val dlg = MaterialAlertDialogBuilder(ctx, R.style.ThemeOverlay_Daily_UnifiedDialog)
-            .setView(view)
+            .setView(DialogIdleBridge.wrap(view))
             .create()
         dlg.setCancelable(cancelable)
 
