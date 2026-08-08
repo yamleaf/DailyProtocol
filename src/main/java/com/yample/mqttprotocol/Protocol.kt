@@ -54,4 +54,10 @@ object Protocol {
     const val PAIRING_INFO = "daily-pairing-v1"
     const val SESSION_KEY_LEN = 32
     const val PAIRING_TTL_MS = 120_000L
+
+    /**
+     * 快照/协议版本号。随每次双端协议变更递增，用于新控制端兼容旧被控端：
+     * 控制端按版本号做容错（缺字段/未知字段一律默认值，不抛异常）。
+     */
+    const val PROTO_VER = "2"
 }
