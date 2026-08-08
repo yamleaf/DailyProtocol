@@ -36,7 +36,6 @@ object Protocol {
     const val FIELD_RANDOM_TIME = "rt"
     const val FIELD_GESTURE_DETECT = "ga"
     const val FIELD_BACK_TO_HOME = "bh"
-    const val FIELD_KEEP_ALIVE = "ka"
     const val FIELD_RESET_HOUR = "rh"
     const val FIELD_TIME_RANGE = "tr"
     const val FIELD_STAY_OVERTIME = "ot"
@@ -48,6 +47,8 @@ object Protocol {
     const val FIELD_BATTERY_SMART_ALERT = "ba" // 智能预警上报开关（bool）
     const val FIELD_BATTERY_WARNING_HOUR = "bw" // 预警上报时间（int, 0-23）
     const val FIELD_BATTERY_ALERT_STAGES = "bs" // 低电量告警段数（int, 0-3）
+    const val FIELD_BATTERY_ALERT_RANGE_START = "br" // 预警检测区间起始小时（int, 0-23）
+    const val FIELD_BATTERY_ALERT_RANGE_DURATION = "bd" // 预警检测区间时长小时（int, 1-24）
 
     const val TOPIC_PREFIX = "dt"
     const val PAIRING_INFO = "daily-pairing-v1"
