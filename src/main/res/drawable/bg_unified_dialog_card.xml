@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 弹窗内容面：近白圆角；软阴影由 kit 里 View.elevation=8dp 绘制（与自启/后台验证 overlay 一致） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/md_surfaceContainerHigh" />
+    <corners android:radius="20dp" />
+</shape>

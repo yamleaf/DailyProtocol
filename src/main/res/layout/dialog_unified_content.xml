@@ -4,31 +4,31 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:paddingStart="24dp"
-    android:paddingEnd="24dp"
-    android:paddingTop="24dp"
-    android:paddingBottom="16dp">
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="14dp">
 
-    <!-- 状态图标：tonal 圆形容器 -->
     <ImageView
         android:id="@+id/ivDialogIcon"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/bg_circle_56"
+        android:background="@drawable/bg_dialog_icon_ring"
         android:scaleType="centerInside"
+        android:padding="12dp"
         android:contentDescription="@null" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="14dp" />
+        android:layout_height="12dp" />
 
     <TextView
         android:id="@+id/tvDialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="2dp"
         android:textColor="@color/md_onSurface" />
@@ -42,15 +42,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:lineSpacingExtra="3dp"
         android:textColor="@color/md_onSurfaceVariant" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="18dp" />
+        android:layout_height="14dp" />
 
-    <!-- 底部按钮栏：双按钮等宽均分；单按钮由 kit 改为居中自然宽度 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/bg_dialog_hairline"
+        android:alpha="0.55" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="12dp" />
+
     <LinearLayout
         android:id="@+id/btnBar"
         android:layout_width="match_parent"
@@ -62,7 +71,7 @@
             android:id="@+id/btnNegative"
             style="@style/Widget.Daily.Dialog.Button.Negative"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:layout_marginEnd="6dp"
             android:visibility="gone" />
@@ -71,7 +80,7 @@
             android:id="@+id/btnPositive"
             style="@style/Widget.Daily.Dialog.Button.Positive"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:layout_marginStart="6dp"
             android:visibility="gone" />

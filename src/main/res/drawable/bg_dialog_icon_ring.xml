@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 弹窗状态图标底：由 kit 按语义注入填充色，保留细描边 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/md_primaryContainer" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/md_outlineVariant" />
+</shape>

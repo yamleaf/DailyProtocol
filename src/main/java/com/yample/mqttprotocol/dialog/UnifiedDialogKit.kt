@@ -1,7 +1,10 @@
 package com.yample.mqttprotocol.dialog
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -18,21 +21,28 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.radiobutton.MaterialRadioButton
 import com.yample.mqttprotocol.R
+import kotlin.math.min
 
 /**
  * 双端统一现代化弹窗组件（控制端 DailyController / 被控端 DailyTask 共用同一实现）。
  *
- * 设计规范（M3 现代审美）：
- *  - 28dp ExtraLarge 圆角，表面采用 md_surfaceContainerHigh（tonal 抬升）
- *  - 44dp 胶囊按钮：双按钮底部等宽均分，单按钮居中自然宽度
- *  - 标准动效（fast_out_slow_in 入场 220ms / linear_out_slow_in 出场 160ms）
- *  - 56dp tonal 圆形图标容器 + 28dp 线条图标
- *
- * 能力：showInfo / showSuccess / showWarning / showPermission / showForm / showMenu / showSingleChoice / showMultiChoice
+ * 设计规范：
+ *  - 最大宽度约 300dp；圆角卡片 + elevation≈8dp 真阴影（对齐自启/后台验证 overlay 的顶部厚度感）
+ *  - 40dp 胶囊按钮：双按钮等宽均分，单按钮居中自然宽度
+ *  - 入场 scale/fade/上浮；图标为 tonal 圆 + 细描边
  */
 object UnifiedDialogKit {
 
     enum class IconType { SUCCESS, WARNING, PERMISSION, INFO }
+
+    /** 弹窗内容区最大宽度（不含侧边留白 / 阴影 bleed） */
+    private const val DIALOG_MAX_WIDTH_DP = 300f
+    /** 相对屏幕两侧的最小留白合计 */
+    private const val DIALOG_SIDE_GAP_DP = 48f
+    /** 与 SettingsFragment 后台验证 overlay 一致的抬升厚度 */
+    private const val DIALOG_ELEVATION_DP = 8f
+    /** 给 elevation 阴影留出的窗口内边距，避免 Dialog 裁切 */
+    private const val DIALOG_SHADOW_BLEED_DP = 14f
 
     private data class IconSpec(val drawable: Int, val containerTint: Int, val iconTint: Int)
 
@@ -50,13 +60,58 @@ object UnifiedDialogKit {
     private fun dp(ctx: Context, value: Float): Int =
         (value * ctx.resources.displayMetrics.density + 0.5f).toInt()
 
+    /**
+     * 透明窗底 + 内容面 elevation 软阴影（对齐自启/后台验证 overlay：顶部有厚度感）。
+     * Dialog 默认会裁切窗外阴影，故在 content 上留 [DIALOG_SHADOW_BLEED_DP] 边距。
+     */
+    private fun polishDialogWindow(dlg: AlertDialog) {
+        val window = dlg.window ?: return
+        val ctx = dlg.context
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        val content = window.findViewById<ViewGroup>(android.R.id.content) ?: return
+        val panel = content.getChildAt(0) ?: return
+        val bleed = dp(ctx, DIALOG_SHADOW_BLEED_DP)
+
+        content.clipChildren = false
+        content.clipToPadding = false
+        content.setPadding(bleed, bleed, bleed, bleed)
+        (panel as? ViewGroup)?.let {
+            it.clipChildren = false
+            it.clipToPadding = false
+        }
+
+        panel.background = ContextCompat.getDrawable(ctx, R.drawable.bg_unified_dialog_card)?.mutate()
+        panel.outlineProvider = android.view.ViewOutlineProvider.BACKGROUND
+        panel.clipToOutline = true
+        panel.elevation = dp(ctx, DIALOG_ELEVATION_DP).toFloat()
+
+        val maxW = dp(ctx, DIALOG_MAX_WIDTH_DP)
+        val width = min(maxW, ctx.resources.displayMetrics.widthPixels - dp(ctx, DIALOG_SIDE_GAP_DP))
+        window.setLayout(width + bleed * 2, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    private fun showPolished(dlg: AlertDialog): AlertDialog {
+        dlg.show()
+        polishDialogWindow(dlg)
+        return dlg
+    }
+
     // ===================== 图标型弹窗 =====================
 
     private fun buildContent(ctx: Context, type: IconType, title: String, message: String): View {
         val view = LayoutInflater.from(ctx).inflate(R.layout.dialog_unified_content, null)
         val spec = specFor(type)
         view.findViewById<ImageView>(R.id.ivDialogIcon).apply {
-            backgroundTintList = ContextCompat.getColorStateList(ctx, spec.containerTint)
+            val ring = ContextCompat.getDrawable(ctx, R.drawable.bg_dialog_icon_ring)?.mutate()
+            if (ring is GradientDrawable) {
+                ring.setColor(ContextCompat.getColor(ctx, spec.containerTint))
+                ring.setStroke(
+                    dp(ctx, 1f),
+                    ContextCompat.getColor(ctx, R.color.md_outlineVariant)
+                )
+            }
+            background = ring
             setImageResource(spec.drawable)
             imageTintList = ContextCompat.getColorStateList(ctx, spec.iconTint)
         }
@@ -126,8 +181,7 @@ object UnifiedDialogKit {
             .create()
         dlg.setCancelable(cancelable)
         configureButtons(dlg, ctx, content, positiveText, negativeText, danger, onPositive, onNegative)
-        dlg.show()
-        return dlg
+        return showPolished(dlg)
     }
 
     /** 信息提示（单按钮居中） */
@@ -139,13 +193,34 @@ object UnifiedDialogKit {
         cancelable: Boolean = true
     ): AlertDialog = createDialog(ctx, IconType.INFO, title, message, buttonText, null, false, cancelable, null, null)
 
-    /** 成功 / 提示（双按钮均分） */
+    /**
+     * 中性确认（信息图标；非破坏性双按钮场景优先用本方法，勿用 [showWarning]）。
+     * @param cancelText 传 null 则单按钮
+     * @param danger true 时主按钮染危险色（仍可用 INFO/WARNING 图标由调用方语义决定；默认 INFO）
+     */
+    fun showConfirm(
+        ctx: Context,
+        title: String,
+        message: String,
+        confirmText: String = "确定",
+        cancelText: String? = "取消",
+        cancelable: Boolean = true,
+        danger: Boolean = false,
+        icon: IconType = IconType.INFO,
+        onConfirm: (() -> Unit)? = null,
+        onCancel: (() -> Unit)? = null
+    ): AlertDialog = createDialog(
+        ctx, icon, title, message, confirmText, cancelText,
+        danger = danger, cancelable = cancelable, onPositive = onConfirm, onNegative = onCancel
+    )
+
+    /** 成功反馈（默认双按钮；[cancelText] 传 null 则单按钮） */
     fun showSuccess(
         ctx: Context,
         title: String,
         message: String,
         confirmText: String = ctx.getString(android.R.string.ok),
-        cancelText: String = ctx.getString(android.R.string.cancel),
+        cancelText: String? = ctx.getString(android.R.string.cancel),
         cancelable: Boolean = true,
         onConfirm: (() -> Unit)? = null,
         onCancel: (() -> Unit)? = null
@@ -154,13 +229,13 @@ object UnifiedDialogKit {
         danger = false, cancelable = cancelable, onPositive = onConfirm, onNegative = onCancel
     )
 
-    /** 警告 / 删除确认（主按钮染危险色） */
+    /** 警告 / 删除等破坏性确认（主按钮染危险色） */
     fun showWarning(
         ctx: Context,
         title: String,
         message: String,
         confirmText: String = "删除",
-        cancelText: String = ctx.getString(android.R.string.cancel),
+        cancelText: String? = ctx.getString(android.R.string.cancel),
         cancelable: Boolean = true,
         onCancel: (() -> Unit)? = null,
         onConfirm: (() -> Unit)? = null
@@ -253,17 +328,24 @@ object UnifiedDialogKit {
         btnBar.gravity = Gravity.CENTER
 
         dlg.setCancelable(cancelable)
-        dlg.setOnShowListener { onShow?.invoke(dlg, btnPos, btnNeg) }
+        dlg.setOnShowListener {
+            polishDialogWindow(dlg)
+            onShow?.invoke(dlg, btnPos, btnNeg)
+        }
         dlg.show()
+        polishDialogWindow(dlg)
         return dlg
     }
 
     // ===================== 列表型弹窗 =====================
 
     private fun rippleBackground(ctx: Context): Drawable? {
-        val outValue = TypedValue()
-        ctx.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
-        return if (outValue.resourceId != 0) ContextCompat.getDrawable(ctx, outValue.resourceId) else null
+        return ContextCompat.getDrawable(ctx, R.drawable.bg_dialog_row_ripple)
+            ?: run {
+                val outValue = TypedValue()
+                ctx.theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
+                if (outValue.resourceId != 0) ContextCompat.getDrawable(ctx, outValue.resourceId) else null
+            }
     }
 
     /** kind: 0=菜单 1=单选 2=多选 */
@@ -271,8 +353,8 @@ object UnifiedDialogKit {
         val row = LinearLayout(ctx).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.CENTER_VERTICAL
-            minimumHeight = dp(ctx, 48f)
-            setPadding(dp(ctx, 12f), 0, dp(ctx, 12f), 0)
+            minimumHeight = dp(ctx, 52f)
+            setPadding(dp(ctx, 12f), dp(ctx, 4f), dp(ctx, 12f), dp(ctx, 4f))
             background = rippleBackground(ctx)
         }
         row.addView(
@@ -349,8 +431,7 @@ object UnifiedDialogKit {
             container.addView(row)
         }
         bindSingleCancel(view, dlg, "取消")
-        dlg.show()
-        return dlg
+        return showPolished(dlg)
     }
 
     /**
@@ -386,8 +467,7 @@ object UnifiedDialogKit {
             container.addView(row)
         }
         bindSingleCancel(view, dlg, "取消")
-        dlg.show()
-        return dlg
+        return showPolished(dlg)
     }
 
     /**
@@ -434,7 +514,6 @@ object UnifiedDialogKit {
             if (onConfirm?.invoke(result) != false) dlg.dismiss()
         }
         btnBar.gravity = Gravity.CENTER
-        dlg.show()
-        return dlg
+        return showPolished(dlg)
     }
 }
