@@ -17,6 +17,8 @@ object Protocol {
     const val CMD_ACTION = "X"
     const val CMD_PUSH = "D"
     const val CMD_ALERT = "AL" // 被控端 → 控制端 一次性事件告警（低电量分段 / 开始充电）
+    /** 被控端 → 控制端：带会话签名的状态信封（解绑等敏感状态用，防公共 Broker 伪造 plain status） */
+    const val CMD_STATUS = "ST"
 
     // 动作命令字段（配合 CMD_ACTION）
     const val ACTION_PUNCH = "punch"
@@ -58,6 +60,9 @@ object Protocol {
     /**
      * 快照/协议版本号。随每次双端协议变更递增，用于新控制端兼容旧被控端：
      * 控制端按版本号做容错（缺字段/未知字段一律默认值，不抛异常）。
+     *
+     * v3：公共 Broker 加固——UB/PA/ACK 强制验签；解绑 status 走签名信封；
+     * resp/push/alert 载荷 AES-GCM（SecretBox）密封后再 HMAC。
      */
-    const val PROTO_VER = "2"
+    const val PROTO_VER = "3"
 }

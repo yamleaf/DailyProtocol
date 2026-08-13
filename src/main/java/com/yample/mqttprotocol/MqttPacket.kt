@@ -60,6 +60,7 @@ data class MqttPacket(
         const val CMD_TASK = Protocol.CMD_TASK
         const val CMD_ACTION = Protocol.CMD_ACTION
         const val CMD_PUSH = Protocol.CMD_PUSH
+        const val CMD_STATUS = Protocol.CMD_STATUS
 
         // 动作常量引用 Protocol
         const val ACTION_PUNCH = Protocol.ACTION_PUNCH
