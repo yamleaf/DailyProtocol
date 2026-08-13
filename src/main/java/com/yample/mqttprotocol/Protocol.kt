@@ -51,6 +51,9 @@ object Protocol {
     const val FIELD_BATTERY_ALERT_STAGES = "bs" // 低电量告警段数（int, 0-3）
     const val FIELD_BATTERY_ALERT_RANGE_START = "br" // 预警检测区间起始小时（int, 0-23）
     const val FIELD_BATTERY_ALERT_RANGE_DURATION = "bd" // 预警检测区间时长小时（int, 1-24）
+    const val FIELD_BOOT_AUTO_SCHEDULE = "bo" // 开机自动调度（bool）
+    const val FIELD_DESKTOP_PET = "dp" // 桌面宠物（bool）
+    const val FIELD_LOG_ENABLED = "lg" // 运行日志总开关（bool）
 
     const val TOPIC_PREFIX = "dt"
     const val PAIRING_INFO = "daily-pairing-v1"
