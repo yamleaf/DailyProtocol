@@ -41,7 +41,7 @@
         android:id="@+id/tvDialogMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:gravity="start"
         android:textSize="14sp"
         android:lineSpacingExtra="3dp"
         android:textColor="@color/md_onSurfaceVariant" />
