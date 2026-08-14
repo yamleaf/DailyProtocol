@@ -29,6 +29,7 @@ object Protocol {
 
     const val FIELD_POWER_SAVE = "ps"
     const val FIELD_FORCE_PSEUDO_MASK = "pm"
+    const val FIELD_SCREEN_MODE = "sm" // 屏幕模式（int：0 伪息屏 / 1 息屏 / 2 常亮）
     const val FIELD_PSEUDO_MASK_TIMEOUT = "tm"
     const val FIELD_PSEUDO_MASK_NO_CLOCK = "nc"
     const val FIELD_NOTIFICATION_TRANSFER = "nt"
@@ -67,5 +68,5 @@ object Protocol {
      * v3：公共 Broker 加固——UB/PA/ACK 强制验签；解绑 status 走签名信封；
      * resp/push/alert 载荷 AES-GCM（SecretBox）密封后再 HMAC。
      */
-    const val PROTO_VER = "3"
+    const val PROTO_VER = "4"
 }
