@@ -35,6 +35,8 @@ object Protocol {
     const val FIELD_NOTIFICATION_TRANSFER = "nt"
     const val FIELD_FEEDBACK_DISABLED = "fd"
     const val FIELD_SKIP_HOLIDAY = "sh"
+    const val FIELD_UPDATE_HOLIDAY = "uh" // 更新节假日（bool：true 触发被控端重新拉取节假日/补班数据）
+    const val FIELD_CUSTOM_WORKDAYS = "cw" // 自定义工作日（string：星期值集合，如 "1,2,3,4,5"）
     const val FIELD_TASK_AUTO_RECYCLE = "ar"
     const val FIELD_RANDOM_TIME = "rt"
     const val FIELD_GESTURE_DETECT = "ga"
