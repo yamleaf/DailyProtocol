@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 深空卡进度条：绿→蓝渐变 + 顶部高光（发光/玻璃质感）；浅/深同色，单份共享 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 主体：绿→蓝渐变 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="3dp" />
+            <gradient
+                android:angle="0"
+                android:endColor="@color/dash_progress_end"
+                android:startColor="@color/dash_progress_start"
+                android:type="linear" />
+        </shape>
+    </item>
+    <!-- 顶部高光：自上而下 40% 白 → 透明，营造发光质感 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="3dp" />
+            <gradient
+                android:angle="270"
+                android:endColor="#00FFFFFF"
+                android:startColor="#59FFFFFF"
+                android:type="linear" />
+        </shape>
+    </item>
+</layer-list>

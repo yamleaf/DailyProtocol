@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 弹窗内容面：近白圆角；软阴影由 kit 里 View.elevation=8dp 绘制（与自启/后台验证 overlay 一致） -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <solid android:color="@color/md_surfaceContainerHigh" />
-    <corners android:radius="20dp" />
-</shape>
+<!-- 弹窗内容面立体方案：
+     投影只从顶部露出（左右底部与表面层齐平），颜色用品牌蓝浅色调而非黑色，
+     在压暗背景上呈现柔和的蓝色调厚度感。 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 顶部投影层：品牌蓝 30%，仅顶边露出 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/dialog_shadow" />
+            <corners android:radius="@dimen/radius_dialog" />
+        </shape>
+    </item>
+
+    <!-- 表面卡片：仅顶部下移 6dp，让投影只在上方形成厚度感 -->
+    <item android:top="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md_surface" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/md_outlineVariant" />
+            <corners android:radius="@dimen/radius_dialog" />
+        </shape>
+    </item>
+
+</layer-list>

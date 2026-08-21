@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  设计令牌 — 尺寸体系 | UI_REDESIGN_PLAN v1.2 §2.4/2.5/2.6
+  间距 8dp 栅格（4 的倍数）；圆角阶梯收敛；阴影 L0-L6 分级
+-->
 <resources>
-    <!-- 间距标尺（4 的倍数节奏，沿用被控端 dp_*） -->
+    <!-- ═══ 间距标尺（4 的倍数节奏）═══ -->
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_12">12dp</dimen>
@@ -8,26 +12,47 @@
     <dimen name="dp_20">20dp</dimen>
     <dimen name="dp_24">24dp</dimen>
     <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_40">40dp</dimen>           <!-- 标准控件/图标按钮高度 -->
+    <dimen name="dp_44">44dp</dimen>           <!-- 信息卡/列表内主按钮高度（§4.2/§4.4） -->
+    <dimen name="dp_48">48dp</dimen>           <!-- 触摸目标/FAB 高度 -->
+    <!-- v1.2：悬浮导航内容底部避让（含凸起按钮上溢余量） -->
+    <dimen name="nav_bottom_padding">84dp</dimen>
+    <dimen name="nav_bottom_padding_dc">88dp</dimen>
 
-    <!-- 圆角（统一阶梯：卡片16 / 统计12 / 药丸8 / 图标容器12 / 对话框20 / 导航卡24 / sheet28） -->
-    <dimen name="radius_card">16dp</dimen>
-    <dimen name="radius_stat">12dp</dimen>
-    <dimen name="radius_pill">8dp</dimen>
-    <dimen name="radius_icon">12dp</dimen>
-    <dimen name="radius_dialog">20dp</dimen>
-    <dimen name="radius_nav">24dp</dimen>
-    <dimen name="radius_sheet">28dp</dimen>
+    <!-- ═══ 圆角（v1.2 收敛阶梯：8/10/12/14/16/20/24/28）═══ -->
+    <dimen name="radius_pill">8dp</dimen>           <!-- Chip、状态胶囊、分组徽章 -->
+    <dimen name="radius_icon">8dp</dimen>           <!-- 32dp 图标容器 -->
+    <dimen name="radius_icon_lg">10dp</dimen>       <!-- 40dp 图标容器 -->
+    <dimen name="radius_stat">10dp</dimen>          <!-- 统计小卡、数据块 -->
+    <dimen name="radius_input">10dp</dimen>         <!-- 输入框、下拉框 -->
+    <dimen name="radius_button">10dp</dimen>        <!-- 按钮 -->
+    <dimen name="radius_action_row">10dp</dimen>    <!-- 操作型全宽按钮行 -->
+    <dimen name="radius_child_card">12dp</dimen>    <!-- 子项内嵌卡片 -->
+    <dimen name="radius_card">14dp</dimen>          <!-- 分组卡片、普通卡片 -->
+    <dimen name="radius_fab">14dp</dimen>           <!-- FAB / Extended FAB -->
+    <dimen name="radius_dialog">16dp</dimen>        <!-- 对话框（已定 16dp） -->
+    <dimen name="radius_nav_card">20dp</dimen>      <!-- Hero 卡、深空仪表盘卡 -->
+    <dimen name="radius_sheet">24dp</dimen>         <!-- 底部面板顶部圆角 -->
+    <dimen name="radius_floating_nav">28dp</dimen>  <!-- 悬浮导航胶囊 -->
+    <!-- 兼容旧引用（保留一版，P3 随引用方迁移后删除） -->
+    <dimen name="radius_nav">@dimen/radius_floating_nav</dimen>
 
-    <!-- 字号 -->
+    <!-- ═══ 字号（type.xml 层级引用此标尺）═══ -->
+    <dimen name="sp_11">11sp</dimen>
     <dimen name="sp_12">12sp</dimen>
     <dimen name="sp_13">13sp</dimen>
     <dimen name="sp_14">14sp</dimen>
     <dimen name="sp_15">15sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_17">17sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_19">19sp</dimen>
     <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_22">22sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_28">28sp</dimen>
 
-    <!-- 组件尺寸 -->
+    <!-- ═══ 组件尺寸 ═══ -->
     <dimen name="list_item_height">60dp</dimen>
     <dimen name="icon_container">40dp</dimen>
     <dimen name="size_28">28dp</dimen>
@@ -35,9 +60,19 @@
     <dimen name="size_56">56dp</dimen>
     <dimen name="min_touch">48dp</dimen>
     <dimen name="divider">1dp</dimen>
+    <!-- v1.2：悬浮导航凸起圆形按钮 -->
+    <dimen name="nav_raised_button">56dp</dimen>
+    <dimen name="nav_raised_lift">14dp</dimen>
+    <!-- v1.2：弹窗对称按钮 -->
+    <dimen name="dialog_button_height">48dp</dimen>
 
-    <!-- 层级（elevation） -->
-    <dimen name="elev_surface">1dp</dimen>
-    <dimen name="elev_raised">3dp</dimen>
-    <dimen name="elev_fab">6dp</dimen>
+    <!-- ═══ 层级 elevation（L0-L6，详见 §2.6 实现路线）═══ -->
+    <dimen name="elev_surface">1dp</dimen>   <!-- L1 列表项/小卡 -->
+    <dimen name="elev_raised">3dp</dimen>    <!-- 兼容旧引用 -->
+    <dimen name="elev_card">3dp</dimen>      <!-- L2 分组卡片 -->
+    <dimen name="elev_appbar">4dp</dimen>    <!-- L3 AppBar -->
+    <dimen name="elev_hero">6dp</dimen>      <!-- L3 Hero/仪表盘卡 -->
+    <dimen name="elev_fab">8dp</dimen>       <!-- L4 FAB -->
+    <dimen name="elev_floating_nav">8dp</dimen> <!-- L4 悬浮导航（自绘偏移阴影为基线，见 3.12/3.13） -->
+    <!-- L5 弹窗为自绘双层阴影 + elevation 8-12dp，见 §2.6 -->
 </resources>

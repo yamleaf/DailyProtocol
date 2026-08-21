@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 悬浮导航地面影：椭圆模糊影（RenderEffect API31+，低版本用此 8% 透明椭圆近似） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#291E1F3A" />
+</shape>

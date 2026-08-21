@@ -4,7 +4,7 @@
     <style name="Widget.Daily.SectionCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/md_surface</item>
         <item name="cardCornerRadius">@dimen/radius_card</item>
-        <item name="cardElevation">@dimen/elev_surface</item>
+        <item name="cardElevation">0dp</item>
         <item name="strokeColor">@color/md_outlineVariant</item>
         <item name="strokeWidth">1dp</item>
     </style>
@@ -30,22 +30,26 @@
     </style>
 
     <!-- ===== 统一弹窗（双端共用）：紧凑卡片 + 内置软阴影 =====
-         - 20dp 圆角；最大宽度约 300dp（kit polishDialogWindow）
+         - 16dp 圆角（已定）；最大宽度约 300dp（kit polishDialogWindow）
          - 阴影画在 drawable 内（Dialog 窗口会裁切 elevation）
-         - 底部按钮 40dp 胶囊 -->
+         - 底部对称按钮 10dp 圆角、48dp 高（§2.10 + P2 对称按钮栏） -->
     <style name="ShapeAppearance.Daily.Dialog" parent="ShapeAppearance.Material3.Corner.Small">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">20dp</item>
+        <item name="cornerSize">@dimen/radius_dialog</item>
     </style>
     <style name="ShapeAppearance.Daily.Input" parent="ShapeAppearance.Material3.Corner.Small">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerSize">@dimen/radius_input</item>
+    </style>
+    <style name="ShapeAppearance.Daily.Snackbar" parent="ShapeAppearance.Material3.Corner.Small">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/radius_button</item>
     </style>
 
     <style name="Widget.Daily.Dialog.Button.Positive" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/md_primary</item>
         <item name="android:textColor">@color/md_onPrimary</item>
-        <item name="cornerRadius">20dp</item>
+        <item name="cornerRadius">@dimen/radius_button</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:textSize">14sp</item>
@@ -59,7 +63,7 @@
         <item name="android:textColor">@color/md_onSurfaceVariant</item>
         <item name="strokeColor">@color/md_outlineVariant</item>
         <item name="strokeWidth">1dp</item>
-        <item name="cornerRadius">20dp</item>
+        <item name="cornerRadius">@dimen/radius_button</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:paddingHorizontal">16dp</item>
         <item name="android:textSize">14sp</item>
@@ -91,15 +95,38 @@
     <style name="ThemeOverlay.Daily.UnifiedDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="shapeAppearance">@style/ShapeAppearance.Daily.Dialog</item>
         <item name="colorPrimary">@color/md_primary</item>
-        <item name="colorSurface">@color/md_surfaceContainerHigh</item>
+        <item name="colorSurface">@color/md_surface</item>
         <item name="android:colorBackground">@android:color/transparent</item>
         <item name="buttonBarPositiveButtonStyle">@style/Widget.Daily.Dialog.Button.Positive</item>
         <item name="buttonBarNegativeButtonStyle">@style/Widget.Daily.Dialog.Button.Negative</item>
         <item name="buttonBarNeutralButtonStyle">@style/Widget.Daily.Dialog.Button.Neutral</item>
         <item name="android:windowAnimationStyle">@style/Animation.Daily.DialogScale</item>
-        <item name="android:backgroundDimAmount">0.40</item>
+        <item name="android:backgroundDimAmount">0.45</item>
         <item name="android:windowMinWidthMajor">68%</item>
         <item name="android:windowMinWidthMinor">78%</item>
         <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <!-- ===== 统一 Snackbar（§3.16）：圆角 10dp、elev_card、左右 margin 16dp、避让导航 ≥110dp ===== -->
+    <style name="Widget.Daily.Snackbar" parent="Widget.Material3.Snackbar">
+        <item name="backgroundTint">@color/md_surface</item>
+        <item name="elevation">@dimen/elev_card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Daily.Snackbar</item>
+    </style>
+    <style name="Widget.Daily.Snackbar.Success" parent="Widget.Daily.Snackbar">
+        <item name="backgroundTint">#E6F4EC</item>
+    </style>
+    <style name="Widget.Daily.Snackbar.Error" parent="Widget.Daily.Snackbar">
+        <item name="backgroundTint">#FDECEC</item>
+    </style>
+    <style name="Widget.Daily.Snackbar.Info" parent="Widget.Daily.Snackbar">
+        <item name="backgroundTint">@color/md_surface</item>
+    </style>
+    <style name="TextAppearance.Daily.Snackbar" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/md_onSurface</item>
+    </style>
+    <style name="TextAppearance.Daily.Snackbar.Action" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textColor">@color/md_primary</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 </resources>

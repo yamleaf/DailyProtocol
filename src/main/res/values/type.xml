@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  设计令牌 — 字体层级 | UI_REDESIGN_PLAN v1.2 §2.3
+  布局引用 TextAppearance，不直接写 sp 组合
+!-->
+<resources>
+    <!-- 倒计时、Hero 大数字（等宽防抖） -->
+    <style name="Text.Daily.Display" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_24</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineHeight">32dp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- AppBar 标题 -->
+    <style name="Text.Daily.Headline" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:lineHeight">28dp</item>
+    </style>
+
+    <!-- 卡片标题 -->
+    <style name="Text.Daily.Title" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:lineHeight">24dp</item>
+    </style>
+
+    <!-- 列表行主标题（设置页） -->
+    <style name="Text.Daily.ListTitle" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:lineHeight">22dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- 列表副标题、标签 -->
+    <style name="Text.Daily.Subtitle" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:lineHeight">20dp</item>
+    </style>
+
+    <!-- 正文 -->
+    <style name="Text.Daily.Body" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:lineHeight">22dp</item>
+    </style>
+
+    <!-- 列表行副标题（最多 2 行，§2.3 截断策略） -->
+    <style name="Text.Daily.ListSubtitle" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:lineHeight">18dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- 辅助说明、时间戳 -->
+    <style name="Text.Daily.Caption" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_12</item>
+        <item name="android:lineHeight">18dp</item>
+    </style>
+
+    <!-- 分组标题（overline） -->
+    <style name="Text.Daily.Overline" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:lineHeight">16dp</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+    <!-- 深空卡标签 RUNTIME STATUS -->
+    <style name="Text.Daily.DashLabel" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_11</item>
+        <item name="android:lineHeight">16dp</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <!-- 深空卡数值（等宽） -->
+    <style name="Text.Daily.DashValue" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineHeight">28dp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+</resources>

@@ -1,71 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ═══════════════════════════════════════════════════════════════
+  设计令牌（浅色模式）— UI_REDESIGN_PLAN v1.2 §2.1
+  双主色体系：商务蓝 #2C5F8A（主操作）+ 品牌紫 #5B5BD6（品牌位）
+  标志性元素（AppBar/FAB/选中胶囊/色条）用紫→蓝渐变
+  库为唯一源，双端 app 不再重复定义；旧别名桥接已在 P3 全量替换并删除
+  ═══════════════════════════════════════════════════════════════
+-->
 <resources>
-    <!-- ===== 品牌主色（D1 决策：双端统一紫 #5B5BD6，库为唯一源，app 层不再重复定义） ===== -->
-    <color name="md_primary">#5B5BD6</color>
+
+    <!-- ════ A. 双主色与品牌色 ════ -->
+    <!-- 商务蓝（主操作）：主按钮、Toggle 开态、导航选中、链接、聚焦描边 -->
+    <color name="md_primary">#2C5F8A</color>
+    <color name="md_primary_dark">#1F4A6E</color>
     <color name="md_onPrimary">#FFFFFF</color>
-    <color name="md_primaryContainer">#E0E0FF</color>
-    <color name="md_onPrimaryContainer">#0E0F4A</color>
+    <color name="md_primaryContainer">#E8F0F7</color>
+    <color name="md_onPrimaryContainer">#1F4A6E</color>
+    <!-- 品牌紫（身份色）：品牌位图标、色条、状态环、入口卡 -->
+    <color name="brand_purple">#5B5BD6</color>
+    <color name="brand_purple_container">#F1F0FB</color>
+    <color name="brand_on_purple_container">#5B5BD6</color>
+    <!-- 紫→蓝签名渐变（仅限 4 处标志性元素） -->
+    <color name="grad_brand_start">#5B5BD6</color>
+    <color name="grad_brand_end">#2C5F8A</color>
+    <!-- 色条/Toggle 渐变别名（语义兼容，值同签名渐变） -->
+    <color name="accent_gradient_start">#5B5BD6</color>
+    <color name="accent_gradient_end">#2C5F8A</color>
 
-    <!-- ===== 次色 ===== -->
-    <color name="md_secondary">#5D5D8A</color>
+    <!-- ════ B. 功能色 ════ -->
+    <color name="md_secondary">#5A5F8A</color>
     <color name="md_onSecondary">#FFFFFF</color>
-    <color name="md_secondaryContainer">#E2E1FA</color>
-    <color name="md_onSecondaryContainer">#1A1A34</color>
+    <color name="md_secondaryContainer">#E4E6F0</color>
+    <color name="md_onSecondaryContainer">#1F2140</color>
 
-    <!-- ===== 第三色（绿） ===== -->
     <color name="md_tertiary">#2E7D5B</color>
     <color name="md_onTertiary">#FFFFFF</color>
     <color name="md_tertiaryContainer">#B7F1D8</color>
     <color name="md_onTertiaryContainer">#002116</color>
 
-    <!-- ===== 语义色 ===== -->
-    <color name="md_error">#BA1A1A</color>
+    <color name="md_error">#B5302A</color>
     <color name="md_onError">#FFFFFF</color>
-    <color name="md_errorContainer">#FFDAD6</color>
+    <color name="md_errorContainer">#FDECEC</color>
     <color name="md_onErrorContainer">#410002</color>
 
-    <color name="md_success">#2E9E63</color>
+    <color name="md_success">#2E7D5B</color>
     <color name="md_onSuccess">#FFFFFF</color>
+    <color name="md_successContainer">#B7F1D8</color>
+    <color name="md_onSuccessContainer">#002116</color>
 
-    <color name="md_warning">#FA8C16</color>
-    <color name="md_warningContainer">#FFF1E6</color>
+    <color name="md_warning">#B8860B</color>
+    <color name="md_warningContainer">#FFF4E0</color>
     <color name="md_onWarningContainer">#5C2E00</color>
 
     <color name="md_teal">#0E9B98</color>
     <color name="md_tealContainer">#E6F7F7</color>
     <color name="md_onTealContainer">#04342C</color>
 
-    <!-- ===== 表面 / 文字 ===== -->
-    <color name="md_surface">#FBF8FF</color>
-    <color name="md_onSurface">#1B1B23</color>
-    <color name="md_surfaceVariant">#E4E1EC</color>
-    <color name="md_onSurfaceVariant">#46464F</color>
-    <color name="md_background">#F6F4FB</color>
-    <color name="md_onBackground">#1B1B23</color>
+    <!-- ════ C. 表面 / 文字 / 描边 ════ -->
+    <color name="md_surface">#FFFFFF</color>
+    <color name="md_onSurface">#1A1F36</color>
+    <color name="md_onSurface_disabled">#611A1F36</color>
+    <color name="md_surfaceVariant">#F8F9FC</color>
+    <color name="md_onSurfaceVariant">#6B7194</color>
+    <color name="md_background">#F5F6FA</color>
+    <color name="md_onBackground">#1A1F36</color>
     <color name="md_surfaceContainerLowest">#FFFFFF</color>
-    <color name="md_surfaceContainerLow">#F5F2FA</color>
-    <color name="md_surfaceContainer">#EFEBF6</color>
-    <color name="md_surfaceContainerHigh">#E9E5F1</color>
-    <color name="md_surfaceContainerHighest">#E3E0EB</color>
-    <color name="md_outline">#767680</color>
-    <color name="md_outlineVariant">#C7C5D0</color>
+    <color name="md_surfaceContainerLow">#F8F9FC</color>
+    <color name="md_surfaceContainer">#F0F2FB</color>
+    <color name="md_surfaceContainerHigh">#E8EAF5</color>
+    <color name="md_surfaceContainerHighest">#E4E8F2</color>
+    <!-- 输入控件描边（可见灰）与 hairline 分隔 -->
+    <color name="md_outline">#C9D1DE</color>
+    <color name="md_outlineVariant">#EEF0F7</color>
+    <color name="color_action_row_bg">#F0F2FB</color>
+    <!-- 弹窗遮罩 45%（浅色；深色模式 55% 见 values-night） -->
+    <color name="color_scrim">#731E1F3A</color>
+    <!-- 悬浮导航磨砂底 85% 白 -->
+    <color name="color_nav_frost">#D9FFFFFF</color>
+    <!-- 波纹色（品牌蓝 8%），经 theme colorControlHighlight 下发 -->
+    <color name="color_ripple">#142C5F8A</color>
 
-    <!-- ===== 头部渐变（控制端） ===== -->
+    <!-- ════ D. 头部 / 状态 ════ -->
+    <!-- AppBar 签名渐变：紫→蓝 -->
     <color name="header_start">#5B5BD6</color>
-    <color name="header_end">#7C4DFF</color>
+    <color name="header_end">#2C5F8A</color>
     <color name="on_header">#FFFFFF</color>
+    <!-- 头部层级文字/图标：次级 70% 白、三级 60% 白（Hero 问候语等） -->
+    <color name="on_header_secondary">#B3FFFFFF</color>
+    <color name="on_header_tertiary">#99FFFFFF</color>
+    <!-- 头部玻璃小卡底色（10% 白，Hero 统计卡） -->
+    <color name="on_header_scrim">#1AFFFFFF</color>
+    <color name="online">#2E7D5B</color>
+    <color name="offline">#9BA1BD</color>
+    <color name="md_skip">#6B7194</color>
+    <color name="md_skipContainer">#EEF0F7</color>
+    <color name="md_missed">#9BA1BD</color>
+    <color name="md_missedContainer">#F5F6FA</color>
+    <!-- 分组徽章（蓝系） -->
+    <color name="badge_bg">#E8F0F7</color>
+    <color name="badge_text">#2C5F8A</color>
 
-    <!-- ===== 状态点（在线/离线） ===== -->
-    <color name="online">#2E9E63</color>
-    <color name="offline">#9A9AA5</color>
+    <!-- ════ E. 深空科技感令牌（设置页仪表盘卡）════ -->
+    <color name="dash_start">#1A2744</color>
+    <color name="dash_end">#2D3F7A</color>
+    <color name="dash_led">#4ADE80</color>
+    <color name="dash_text_primary">#FFFFFF</color>
+    <color name="dash_text_secondary">#B3FFFFFF</color>
+    <color name="dash_progress_bg">#33FFFFFF</color>
+    <color name="dash_progress_start">#4ADE80</color>
+    <color name="dash_progress_end">#60A5FA</color>
 
-    <!-- ===== 控制端专属语义扩展（原 app 局部定义，统一上提到库；无深色变体，沿用浅色） ===== -->
-    <color name="md_skip">#616161</color>
-    <color name="md_skipContainer">#ECEFF1</color>
-    <color name="md_missed">#9AA0A6</color>
-    <color name="md_missedContainer">#F1F3F4</color>
+    <!-- ════ F. 悬浮窗（深空玻璃卡）令牌：overlay 始终深色，独立于 app 主题 ════ -->
+    <color name="float_bg_start">#E612141C</color>
+    <color name="float_bg_center">#CC161A24</color>
+    <color name="float_bg_end">#B3181C28</color>
+    <color name="float_accent">#E8C07A</color>
+    <color name="float_accent_soft">#66E8C07A</color>
+    <color name="float_label">#A8B0C0</color>
+    <color name="float_time">#FFF6ED</color>
 
-    <!-- ===== 历史/工具色（库统一提供，app 不再重复定义，避免跨模块重复资源） ===== -->
+    <!-- ════ 历史色（兼容保留，P3 清理）════ -->
     <color name="ios_green">#4DDC64</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -74,17 +128,5 @@
     <color name="orange">#FFC107</color>
     <color name="light_gray">#D3D3D3</color>
 
-    <!-- ===== 被控端旧名别名桥接（指向 md_*，保证过渡期代码不崩，库统一提供） ===== -->
-    <color name="theme_color">@color/md_primary</color>
-    <color name="surface">@color/md_surface</color>
-    <color name="on_surface">@color/md_onSurface</color>
-    <color name="surface_variant">@color/md_surfaceVariant</color>
-    <color name="on_surface_variant">@color/md_onSurfaceVariant</color>
-    <color name="outline">@color/md_outline</color>
-    <color name="outline_variant">@color/md_outlineVariant</color>
-    <color name="primary_container">@color/md_primaryContainer</color>
-    <color name="on_primary_container">@color/md_onPrimaryContainer</color>
-    <color name="back_ground_color">@color/md_background</color>
-    <color name="text_hint_color">#CCCCCC</color>
-    <color name="text_default_color">#424242</color>
+    <color name="dialog_shadow">#C4CBD6</color> <!-- 弹窗顶部投影：浅灰色厚度边 -->
 </resources>

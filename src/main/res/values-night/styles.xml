@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 深色模式弹窗覆盖：遮罩更重 0.55（§2.8 浅色 0.45 / 深色 0.55） -->
+<resources>
+    <style name="ThemeOverlay.Daily.UnifiedDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearance">@style/ShapeAppearance.Daily.Dialog</item>
+        <item name="colorPrimary">@color/md_primary</item>
+        <item name="colorSurface">@color/md_surface</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Daily.Dialog.Button.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Daily.Dialog.Button.Negative</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Widget.Daily.Dialog.Button.Neutral</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Daily.DialogScale</item>
+        <item name="android:backgroundDimAmount">0.55</item>
+        <item name="android:windowMinWidthMajor">68%</item>
+        <item name="android:windowMinWidthMinor">78%</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

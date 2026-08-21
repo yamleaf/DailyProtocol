@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 弹窗自绘双层阴影（兜底：Dialog 窗口裁切 elevation 时启用） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 远距柔光 -->
+    <item android:left="6dp" android:right="6dp" android:top="10dp" android:bottom="14dp">
+        <shape>
+            <solid android:color="#141E1F3A" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+    <!-- 近距实影 -->
+    <item android:left="2dp" android:right="2dp" android:top="3dp" android:bottom="5dp">
+        <shape>
+            <solid android:color="#1A1E1F3A" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+    <!-- 白色内容层由 dialog 内容 View 承载 -->
+</layer-list>
