@@ -63,14 +63,37 @@ object Protocol {
     const val SESSION_KEY_LEN = 32
     const val PAIRING_TTL_MS = 120_000L
 
+    // ═══════ 设备ID占用仲裁（presence，防同 deviceId 双机上线互扰）═══════
+    // 挑战者上线前发 PRB 探测，在位者实时回 CLM 或以 retained 占位牌(HB)表明占用；
+    // 冲突时只有挑战者停服。报文为轻量 JSON，旧版本处理器天然忽略。
+    /** 探测报文：谁在用这个 deviceId？ */
+    const val CMD_PROBE = "PRB"
+    /** 应答报文：我占着、我活着 */
+    const val CMD_CLAIM = "CLM"
+    /** 周期占位牌（retained）：异常死亡后由 ts 过期自然失效 */
+    const val CMD_HEARTBEAT = "HB"
+    /** 会话标识字段：区分不同设备实例（持久化，跨进程死亡认领自己的旧占位牌） */
+    const val FIELD_SID = "sid"
+    /** 异常接入上报事件类型（复用 alert 通道） */
+    const val ALERT_TYPE_ID_CONFLICT = "id_conflict"
+
+    // ═══════ 告警回放（防控制端离线期间漏收告警）═══════
+    /** 控制端首进详情页拉取近期告警；被控端经 resp(field=alerts) 密封回放 */
+    const val CMD_ALERT_QUERY = "AQ"
+
     /**
-     * 快照/协议版本号。双端版本号从 1.0 起步，采用语义化版本：
-     * - 次版本（1.x）：向后兼容的小改动——新增字段/指令、字段含义扩展等，双端各自容错默认值即可；
-     * - 主版本（2.0...）：不兼容的大改动——字段语义重定义、指令流程重构、加密封装变更等。
+     * 快照/协议版本号。采用语义化版本：
+     * - 次版本（x.y）：向后兼容的小改动——新增字段/指令、字段含义扩展等，双端各自容错默认值即可；
+     * - 主版本（x.0）：不兼容的大改动——字段语义重定义、指令流程重构、加密封装变更等。
      *
      * 控制端按此版本号做容错（缺字段/未知字段一律默认值，不抛异常）。
-     * 历史主版本（旧 v3/v4 编号制）：v3 公共 Broker 加固——UB/PA/ACK 强制验签、解绑 status 走签名信封、
-     * resp/push/alert 载荷 AES-GCM（SecretBox）密封后再 HMAC。
+     *
+     * 历史记录：
+     * - v3（旧编号制）：公共 Broker 加固——UB/PA/ACK 强制验签、解绑 status 走签名信封、
+     *   resp/push/alert 载荷 AES-GCM（SecretBox）密封后再 HMAC。
+     * - 1.0：改用语义化版本制。
+     * - 2.0：设备ID占用仲裁（presence：PRB/CLM/HB/sid 上线流程重构）、告警回放 AQ、
+     *   状态签名信封 ST、低电量分段告警与智能预警、id_conflict 异常接入上报。
      */
-    const val PROTO_VER = "1.0"
+    const val PROTO_VER = "2.0"
 }
