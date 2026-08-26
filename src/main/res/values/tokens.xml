@@ -114,10 +114,10 @@
     <color name="float_bg_start">#E612141C</color>
     <color name="float_bg_center">#CC161A24</color>
     <color name="float_bg_end">#B3181C28</color>
-    <color name="float_accent">#E8C07A</color>
-    <color name="float_accent_soft">#66E8C07A</color>
-    <color name="float_label">#A8B0C0</color>
-    <color name="float_time">#FFF6ED</color>
+    <color name="float_accent">#B96A2A</color>
+    <color name="float_accent_soft">#59E8A95C</color>
+    <color name="float_label">#8A6B4D</color>
+    <color name="float_time">#A85C1E</color>
 
     <!-- ════ 历史色（兼容保留，P3 清理）════ -->
     <color name="ios_green">#4DDC64</color>
