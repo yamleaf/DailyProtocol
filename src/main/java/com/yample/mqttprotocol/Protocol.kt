@@ -88,6 +88,8 @@ object Protocol {
     const val ALERT_TYPE_TASK_RESET = "task_reset"
     /** 解除设备绑定 */
     const val ALERT_TYPE_UNBOUND = "unbound"
+    /** 手动打卡结果回传（仅控制端触发时，供控制端弹窗反馈） */
+    const val ALERT_TYPE_PUNCH_RESULT = "punch_result"
 
     // ═══════ 告警回放（防控制端离线期间漏收告警）═══════
     /** 控制端首进详情页拉取近期告警；被控端经 resp(field=alerts) 密封回放 */
