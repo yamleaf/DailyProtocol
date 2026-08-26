@@ -77,6 +77,18 @@ object Protocol {
     /** 异常接入上报事件类型（复用 alert 通道） */
     const val ALERT_TYPE_ID_CONFLICT = "id_conflict"
 
+    // ═══════ 危险操作告警类型（复用 alert 通道，PROTO_VER 2.1 新增）═══════
+    /** 远程/指令终止当日任务 */
+    const val ALERT_TYPE_REMOTE_STOP = "remote_stop"
+    /** 关闭每日循环（永久暂停自动打卡） */
+    const val ALERT_TYPE_LOOP_OFF = "loop_off"
+    /** 被控端进入「暂停使用」状态 */
+    const val ALERT_TYPE_PAUSED = "paused"
+    /** 每日任务重置执行 */
+    const val ALERT_TYPE_TASK_RESET = "task_reset"
+    /** 解除设备绑定 */
+    const val ALERT_TYPE_UNBOUND = "unbound"
+
     // ═══════ 告警回放（防控制端离线期间漏收告警）═══════
     /** 控制端首进详情页拉取近期告警；被控端经 resp(field=alerts) 密封回放 */
     const val CMD_ALERT_QUERY = "AQ"
@@ -94,6 +106,8 @@ object Protocol {
      * - 1.0：改用语义化版本制。
      * - 2.0：设备ID占用仲裁（presence：PRB/CLM/HB/sid 上线流程重构）、告警回放 AQ、
      *   状态签名信封 ST、低电量分段告警与智能预警、id_conflict 异常接入上报。
+     * - 2.1：新增危险操作告警类型（remote_stop/loop_off/paused/task_reset/unbound），
+     *   复用 alert 通道，控制端据此展示「操作留痕」类告警。
      */
-    const val PROTO_VER = "2.0"
+    const val PROTO_VER = "2.1"
 }
