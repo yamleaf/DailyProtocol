@@ -80,8 +80,12 @@ object Protocol {
     // ═══════ 危险操作告警类型（复用 alert 通道，PROTO_VER 2.1 新增）═══════
     /** 远程/指令终止当日任务 */
     const val ALERT_TYPE_REMOTE_STOP = "remote_stop"
-    /** 关闭每日循环（永久暂停自动打卡） */
+    /** 远程/指令启动当日任务 */
+    const val ALERT_TYPE_TASK_START = "task_start"
+    /** 关闭每日循环 */
     const val ALERT_TYPE_LOOP_OFF = "loop_off"
+    /** 开启每日循环 */
+    const val ALERT_TYPE_LOOP_ON = "loop_on"
     /** 被控端进入「暂停使用」状态 */
     const val ALERT_TYPE_PAUSED = "paused"
     /** 每日任务重置执行 */
