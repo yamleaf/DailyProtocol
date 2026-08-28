@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.yample.mqttprotocol'
-    compileSdk 37
+    namespace = 'com.yample.mqttprotocol'
+    compileSdk = 37
 
     defaultConfig {
-        minSdk 26
+        minSdk = 26
         consumerProguardFiles 'proguard-rules.pro'
     }
 
