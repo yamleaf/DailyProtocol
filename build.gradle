@@ -1,11 +1,10 @@
 plugins {
     id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
 }
 
 android {
     namespace 'com.yample.mqttprotocol'
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         minSdk 26
@@ -17,14 +16,10 @@ android {
             targetCompatibility JavaVersion.VERSION_21
     }
 
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(21)
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
         }
-    }
-
-    kotlinOptions {
-        jvmTarget = "21"
     }
 }
 
