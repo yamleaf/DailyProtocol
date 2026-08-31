@@ -95,6 +95,22 @@ object Protocol {
     /** 手动打卡结果回传（仅控制端触发时，供控制端弹窗反馈） */
     const val ALERT_TYPE_PUNCH_RESULT = "punch_result"
 
+    // ═══════ Shizuku 远程登录 / 身份验证（feat_shiziku 新增，PROTO_VER 2.1 次版本兼容）═══════
+    /** 控制端 → 被控端：手动登录（跳打卡 App → 按登录步骤点击 → 反馈结果） */
+    const val ACTION_MANUAL_LOGIN = "manual_login"
+    /** 控制端 → 被控端：身份验证（跳打卡 App → 按验证步骤点击 → 反馈结果） */
+    const val ACTION_IDENTITY_VERIFY = "identity_verify"
+    /** 控制端 → 被控端：下发短信验证码（String），配合 CMD_UPDATE 通道 */
+    const val FIELD_VERIFY_CODE = "vc"
+    /** 控制端 → 被控端：下发 Shizuku 全量配置（JSON String，不含密码明文；密码仅被控端本地设置） */
+    const val FIELD_SHIZUKU_CONFIG = "szcfg"
+    /** 被控端 → 控制端：请求短信验证码（alert 通道，控制端弹窗索取后回填） */
+    const val ALERT_TYPE_VERIFY_CODE_REQUEST = "verify_code_request"
+    /** 被控端 → 控制端：手动登录结果反馈（alert 通道） */
+    const val ALERT_TYPE_LOGIN_RESULT = "login_result"
+    /** 被控端 → 控制端：身份验证结果反馈（alert 通道） */
+    const val ALERT_TYPE_VERIFY_RESULT = "verify_result"
+
     // ═══════ 告警回放（防控制端离线期间漏收告警）═══════
     /** 控制端首进详情页拉取近期告警；被控端经 resp(field=alerts) 密封回放 */
     const val CMD_ALERT_QUERY = "AQ"
