@@ -100,16 +100,28 @@ object Protocol {
     const val ACTION_MANUAL_LOGIN = "manual_login"
     /** 控制端 → 被控端：身份验证（跳打卡 App → 按验证步骤点击 → 反馈结果） */
     const val ACTION_IDENTITY_VERIFY = "identity_verify"
+    /** 控制端 → 被控端：模拟打卡（跳打卡 App → 按模拟打卡步骤点击 → 反馈结果） */
+    const val ACTION_SIMULATE_PUNCH = "simulate_punch"
     /** 控制端 → 被控端：下发短信验证码（String），配合 CMD_UPDATE 通道 */
     const val FIELD_VERIFY_CODE = "vc"
     /** 控制端 → 被控端：下发 Shizuku 全量配置（JSON String，不含密码明文；密码仅被控端本地设置） */
     const val FIELD_SHIZUKU_CONFIG = "szcfg"
+    /** 控制端 → 被控端：短信采集完成后确认信号（String "1"；配合 CMD_UPDATE 通道），被控端据此继续下一步 */
+    const val FIELD_SMS_SENT = "sms_sent"
+    /** 控制端 → 被控端：结果判定人工确认（String "success"/"fail"；配合 CMD_UPDATE 通道），被控端据此判定登录/验证成败 */
+    const val FIELD_RESULT_CONFIRM = "rc"
     /** 被控端 → 控制端：请求短信验证码（alert 通道，控制端弹窗索取后回填） */
     const val ALERT_TYPE_VERIFY_CODE_REQUEST = "verify_code_request"
+    /** 被控端 → 控制端：请求采集短信（钉钉验证码登录，msg=JSON{content,recipient}；控制端展示后确认 FIELD_SMS_SENT） */
+    const val ALERT_TYPE_SMS_CAPTURE = "sms_capture"
     /** 被控端 → 控制端：手动登录结果反馈（alert 通道） */
     const val ALERT_TYPE_LOGIN_RESULT = "login_result"
     /** 被控端 → 控制端：身份验证结果反馈（alert 通道） */
     const val ALERT_TYPE_VERIFY_RESULT = "verify_result"
+    /** 被控端 → 控制端：模拟打卡结果反馈（alert 通道） */
+    const val ALERT_TYPE_SIMULATE_PUNCH_RESULT = "simulate_punch_result"
+    /** 被控端 → 控制端：结果判定步骤触发（截图已经邮箱/企微回传），请求控制端人工确认成功/失败（FIELD_RESULT_CONFIRM） */
+    const val ALERT_TYPE_RESULT_SCREENSHOT = "result_screenshot"
 
     // ═══════ 告警回放（防控制端离线期间漏收告警）═══════
     /** 控制端首进详情页拉取近期告警；被控端经 resp(field=alerts) 密封回放 */
