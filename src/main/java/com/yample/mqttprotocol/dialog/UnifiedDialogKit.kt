@@ -64,7 +64,10 @@ object UnifiedDialogKit {
      * 透明窗底 + 内容面 elevation 软阴影（对齐自启/后台验证 overlay：顶部有厚度感）。
      * Dialog 默认会裁切窗外阴影，故在 content 上留 [DIALOG_SHADOW_BLEED_DP] 边距。
      */
-    private fun polishDialogWindow(dlg: AlertDialog) {
+    private fun polishDialogWindow(
+        dlg: AlertDialog,
+        fullWidth: Boolean = false
+    ) {
         val window = dlg.window ?: return
         val ctx = dlg.context
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -86,9 +89,13 @@ object UnifiedDialogKit {
         panel.clipToOutline = true
         panel.elevation = dp(ctx, DIALOG_ELEVATION_DP).toFloat()
 
-        val maxW = dp(ctx, DIALOG_MAX_WIDTH_DP)
-        val width = min(maxW, ctx.resources.displayMetrics.widthPixels - dp(ctx, DIALOG_SIDE_GAP_DP))
-        window.setLayout(width + bleed * 2, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val width = if (fullWidth) {
+            ctx.resources.displayMetrics.widthPixels - dp(ctx, DIALOG_SIDE_GAP_DP) + bleed * 2
+        } else {
+            val maxW = dp(ctx, DIALOG_MAX_WIDTH_DP)
+            min(maxW, ctx.resources.displayMetrics.widthPixels - dp(ctx, DIALOG_SIDE_GAP_DP))
+        }
+        window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
     }
 
     private fun showPolished(dlg: AlertDialog): AlertDialog {
@@ -274,6 +281,7 @@ object UnifiedDialogKit {
         positiveText: String = "确定",
         negativeText: String? = "取消",
         cancelable: Boolean = true,
+        fullWidth: Boolean = false,
         onShow: ((AlertDialog, Button, Button) -> Unit)? = null,
         onCancel: ((AlertDialog) -> Boolean)? = null,
         onConfirm: ((AlertDialog) -> Boolean)? = null
@@ -329,11 +337,11 @@ object UnifiedDialogKit {
 
         dlg.setCancelable(cancelable)
         dlg.setOnShowListener {
-            polishDialogWindow(dlg)
+            polishDialogWindow(dlg, fullWidth)
             onShow?.invoke(dlg, btnPos, btnNeg)
         }
         dlg.show()
-        polishDialogWindow(dlg)
+        polishDialogWindow(dlg, fullWidth)
         return dlg
     }
 
