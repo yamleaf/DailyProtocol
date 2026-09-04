@@ -98,10 +98,16 @@ object Protocol {
     // ═══════ Shizuku 远程登录 / 身份验证（feat_shiziku 新增，PROTO_VER 2.1 次版本兼容）═══════
     /** 控制端 → 被控端：手动登录（跳打卡 App → 按登录步骤点击 → 反馈结果） */
     const val ACTION_MANUAL_LOGIN = "manual_login"
+    /** 控制端 → 被控端：验证码登录（独立按钮，走验证码登录步骤；区别于密码登录的 manual_login） */
+    const val ACTION_VERIFY_LOGIN = "verify_login"
     /** 控制端 → 被控端：身份验证（跳打卡 App → 按验证步骤点击 → 反馈结果） */
     const val ACTION_IDENTITY_VERIFY = "identity_verify"
     /** 控制端 → 被控端：模拟打卡（跳打卡 App → 按模拟打卡步骤点击 → 反馈结果） */
     const val ACTION_SIMULATE_PUNCH = "simulate_punch"
+    /** 控制端 → 被控端：自定义操作1（跳对应 App → 按自定义操作1步骤点击 → 反馈结果） */
+    const val ACTION_CUSTOM_1 = "custom_1"
+    /** 控制端 → 被控端：自定义操作2（跳对应 App → 按自定义操作2步骤点击 → 反馈结果） */
+    const val ACTION_CUSTOM_2 = "custom_2"
     /** 控制端 → 被控端：下发短信验证码（String），配合 CMD_UPDATE 通道 */
     const val FIELD_VERIFY_CODE = "vc"
     /** 控制端 → 被控端：下发 Shizuku 全量配置（JSON String，不含密码明文；密码仅被控端本地设置） */
@@ -120,6 +126,8 @@ object Protocol {
     const val ALERT_TYPE_VERIFY_RESULT = "verify_result"
     /** 被控端 → 控制端：模拟打卡结果反馈（alert 通道） */
     const val ALERT_TYPE_SIMULATE_PUNCH_RESULT = "simulate_punch_result"
+    /** 被控端 → 控制端：自定义操作结果反馈（alert 通道；msg=结果描述，name=操作名称可选） */
+    const val ALERT_TYPE_CUSTOM_RESULT = "custom_result"
     /** 被控端 → 控制端：结果判定步骤触发（截图已经邮箱/企微回传），请求控制端人工确认成功/失败（FIELD_RESULT_CONFIRM） */
     const val ALERT_TYPE_RESULT_SCREENSHOT = "result_screenshot"
 
