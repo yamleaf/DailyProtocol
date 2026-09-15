@@ -90,6 +90,8 @@ object Protocol {
     const val ALERT_TYPE_PAUSED = "paused"
     /** 每日任务重置执行 */
     const val ALERT_TYPE_TASK_RESET = "task_reset"
+    /** 定时/远程打卡因 Shizuku 操作冲突被跳过 */
+    const val ALERT_TYPE_TASK_SKIP = "task_skip"
     /** 解除设备绑定 */
     const val ALERT_TYPE_UNBOUND = "unbound"
     /** 手动打卡结果回传（仅控制端触发时，供控制端弹窗反馈） */
