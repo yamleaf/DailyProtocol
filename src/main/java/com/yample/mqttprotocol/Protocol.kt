@@ -114,6 +114,8 @@ object Protocol {
     const val FIELD_VERIFY_CODE = "vc"
     /** 控制端 → 被控端：下发 Shizuku 全量配置（JSON String，不含密码明文；密码仅被控端本地设置） */
     const val FIELD_SHIZUKU_CONFIG = "szcfg"
+    /** 控制端 → 被控端：激活/启动 Shizuku 服务（Bool true；触发被控端发广播拉起 Shizuku manager 启动 server） */
+    const val FIELD_SHIZUKU_START = "szstart"
     /** 控制端 → 被控端：短信采集完成后确认信号（String "1"；配合 CMD_UPDATE 通道），被控端据此继续下一步 */
     const val FIELD_SMS_SENT = "sms_sent"
     /** 控制端 → 被控端：结果判定人工确认（String "success"/"fail"；配合 CMD_UPDATE 通道），被控端据此判定登录/验证成败 */
