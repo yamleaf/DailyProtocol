@@ -110,6 +110,8 @@ object Protocol {
     const val ACTION_CUSTOM_1 = "custom_1"
     /** 控制端 → 被控端：自定义操作2（跳对应 App → 按自定义操作2步骤点击 → 反馈结果） */
     const val ACTION_CUSTOM_2 = "custom_2"
+    /** 控制端 → 被控端：清理打卡应用后台（force-stop 目标打卡应用，需 Shizuku 授权；即时动作，无视清理开关） */
+    const val ACTION_CLEAR_BACKEND = "clear_backend"
     /** 控制端 → 被控端：下发短信验证码（String），配合 CMD_UPDATE 通道 */
     const val FIELD_VERIFY_CODE = "vc"
     /** 控制端 → 被控端：下发 Shizuku 全量配置（JSON String，不含密码明文；密码仅被控端本地设置） */
